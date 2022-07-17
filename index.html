@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Forecast</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css">
+    
+  </head>
+  <body>
+    <div class="Container">
+      <form id="search-form" class="d-flex">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="Enter the city ..." aria-label="Search">
+                <button class="btn" id="search-button" type="submit">Search</button>
+                <button class="btn" id="current-button">Current Location</button>
+              </form>
+   
+   <h1 class = "town">Kyiv,Ukraine 🇺🇦</h1>
+      <h2 class = "todaysTemp">32°C</h2>
+      <hr>
+      <div class="row">
+        <div class="col">6am 
+            <p> 24°C 🌥</p>
+        </div>
+        <div class="col">7am
+            <p> 25°C 🌥</p>
+        </div>
+        <div class="col">8am
+            <p> 26°C 🌤</p>
+        </div>
+        <div class="col">9am
+            <p> 26°C 🌤</p>
+        </div>
+        <div class="col">10am
+            <p> 28°C 🌤</p>
+        </div>
+        <div class="col">11am
+            <p> 29°C ☀️</p>
+        </div>
+        <div class="col">12pm
+            <p> 30°C ☀️</p>
+        </div>
+        <div class="col">1pm
+            <p> 32°C ☀️</p>
+        </div>
+        <div class="col">2pm
+            <p> 32°C ☀️</p>
+        </div>
+        <div class="col">3pm
+            <p> 32°C ☀️</p>
+        </div>
+        <div class="col">4pm
+            <p> 30°C ☀️</p>
+        </div>
+        <div class="col">5pm
+            <p> 29°C 🌤</p>
+        </div>
+      </div>
+
+      <hr />
+      <h3 id=" current-date">Saturday 14:00 </h3>
+         
+            
+         
+      <ul>
+        <li class="precipitation">precipitation: 0%</li>
+        <li class="humidity">humidity: 21%</li>
+        <li class="wind-speed">wind: 8km/h</li>
+      </ul>
+      <div class="row">
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Sunday 19.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Monday 20.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Tuesday 21.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Wednesday 22.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Thursday 23.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+        <div class="col"><div class="card" style="width: fit-content;">
+          <div class="card-body">
+            <h5 class="card-title">Friday 24.06</h5>
+            <p class="card-text">32°C ☀️</p>
+            <a href="#" class="btn btn-primary">Learn more</a>
+          </div>
+        </div></div>
+
+      </div>
+    </div>
+      
+    </div>
+    </div>
+  
+    <script>
+      let now = new Date();
+console.log(now);
+let currentDate = document.querySelector("h3");
+let date = now.getDate();
+let hours = now.getHours();
+let minutes = now.getMinutes();
+let year = now.getFullYear();
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[now.getDay()];
+
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+let month = months[now.getMonth()];
+
+currentDate.innerHTML = `${day} ${hours}:${minutes}, ${date} ${month}, ${year} `;
+
+function showTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let todaysTemp = document.querySelector("h2");
+  todaysTemp.innerHTML = `${temperature} °C`;
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = response.data.name;
+}
+
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "metric";
+  let apiKey = "664664b88d34f104fafc91c238ca36bd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+let button = document.querySelector("#current-button");
+button.addEventListener("click", getPosition);
+
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+
+  let h1 = document.querySelector("h1");
+  if (searchInput.value) {
+    h1.innerHTML = `${searchInput.value}`;
+    searchCity(searchInput.value);
+  } else {
+    alert("Please type a city");
+  }
+}
+
+function searchCity(city) {
+  let units = "metric";
+  let apiKey = "664664b88d34f104fafc91c238ca36bd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+
+
+
+
+
+    </script>
+  </body>
+</html>

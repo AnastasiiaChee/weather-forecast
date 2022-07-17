@@ -1,0 +1,55 @@
+body {
+  margin: 10px 20px;
+  background-color: rgb(252, 199, 207);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+}
+.search {
+  display: block;
+  margin: 20px 10px;
+  padding: 0;
+}
+h1 {
+  color: rgb(66, 73, 77);
+  font-weight: bold;
+  margin: 20px 20px 20px 0;
+}
+
+.col {
+  font-weight: 100;
+
+  opacity: 0.7;
+}
+p {
+  font-weight: 900;
+}
+.card-title {
+  color: blue;
+  text-decoration: none;
+}
+h3 {
+  text-decoration: underline;
+}
+ul {
+  font-size: small;
+  opacity: 0.7;
+}
+.buttonCurrentPosition {
+  display: block;
+  margin: 20px 10px;
+  padding: 0;
+}
+li:hover {
+  color: black;
+}
+h1:hover {
+  font-weight: bolder;
+  color: black;
+
+  clip-path: inset(0% 50% 0% 0);
+  background-color: rgb(246, 214, 219);
+}
+h2:hover {
+  font-weight: bolder;
+  color: black;
+}
